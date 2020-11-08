@@ -1,243 +1,193 @@
-<div align="center" style="margin-bottom:30px">
-    <a href='https://github.com/vagr9k/gatsby-advanced-starter/blob/master/LICENSE'>
-    <img src="https://img.shields.io/github/license/vagr9k/gatsby-advanced-starter.svg" alt="Logo" />
-    </a>
-    <a href='https://github.com/vagr9k/gatsby-advanced-starter'>
-    <img src="https://img.shields.io/github/tag/vagr9k/gatsby-advanced-starter.svg" alt="Logo" />
-    </a>
-        <a href='https://github.com/vagr9k/gatsby-advanced-starter/stargazers'>
-    <img src="https://img.shields.io/github/stars/vagr9k/gatsby-advanced-starter.svg" alt="Logo" />
-    </a>
-        <a href="https://twitter.com/intent/tweet?text=A%20cool%20%40gatsbyjs%20starter%3A&url=https%3A%2F%2Fgithub.com%2FVagr9K%2Fgatsby-advanced-starter">
-    <img src="https://img.shields.io/twitter/url/https/github.com/vagr9k/gatsby-advanced-starter.svg?style=social" alt="Logo" />
-    </a>
-</div>
+<h1 align="center">
+    <img alt="Lumen" title="Lumen" src="https://github.com/alxshelepenok/gatsby-starter-lumen/blob/gatsby-v2/.github/logo.png" width="140"> </br>
+    Lumen
+</h1>
 
-<div align="center"  style="margin-bottom:30px">
-    <img src="static/logos/logo-1024.png" alt="Logo" width='200px' height='200px'/>
-</div>
+<h4 align="center">
+  A constantly evolving and thoughtful architecture for creating new static blogs.
+</h4>
 
-<div align="center">
-    <a href="https://codeclimate.com/github/Vagr9K/gatsby-advanced-starter">
-      <img src="https://codeclimate.com/github/Vagr9K/gatsby-advanced-starter/badges/gpa.svg" alt="Logo" />
-    </a>
-    <a href='https://codeclimate.com/github/Vagr9K/gatsby-advanced-starter'>
-      <img src="https://codeclimate.com/github/Vagr9K/gatsby-advanced-starter/badges/issue_count.svg" alt="Logo" />
-    </a>
-    <a href='https://www.codacy.com/app/Vagr9K/gatsby-advanced-starter?utm_source=github.com&utm_medium=referral&utm_content=Vagr9K/gatsby-advanced-starter&utm_campaign=Badge_Grade'>
-      <img src="https://api.codacy.com/project/badge/Grade/990fb54ea8094f2aa0ed77f14e859820" alt="Logo" />
-    </a>
-    <a href='https://github.com/prettier/prettier'>
-      <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="Logo" />
-    </a>
-</div>
+<p align="center">
+    <a target="_blank" href="https://circleci.com/gh/alxshelepenok/gatsby-starter-lumen"><img src="https://circleci.com/gh/alxshelepenok/gatsby-starter-lumen.svg?style=svg"></a> <a target="_blank" href="https://codecov.io/gh/alxshelepenok/gatsby-starter-lumen"><img src="https://codecov.io/gh/alxshelepenok/gatsby-starter-lumen/branch/master/graph/badge.svg"></a> <a target="_blank" href="https://www.codacy.com/app/alxshelepenok/gatsby-starter-lumen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=alxshelepenok/gatsby-starter-lumen&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/f7e27bb3a28a46a6b13453a02801c5c9"></a> <a target="_blank" href="https://codeclimate.com/github/alxshelepenok/gatsby-starter-lumen"><img src="https://img.shields.io/codeclimate/maintainability/alxshelepenok/gatsby-starter-lumen.svg"></a> <a href="https://app.fossa.io/projects/git%2Bgithub.com%2Falxshelepenok%2Fgatsby-starter-lumen?ref=badge_shield" alt="FOSSA Status"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Falxshelepenok%2Fgatsby-starter-lumen.svg?type=shield"/></a>
+</p>
 
-# Gatsby Advanced Starter
-
-A starter skeleton with advanced features for [Gatsby](https://github.com/gatsbyjs/gatsby/).
-
-**NOTE**: This branch contains Gatsby v2 compatible version of the starter. To get the Gatsby v1 compatible version, use the [`v1`](https://github.com/Vagr9K/gatsby-advanced-starter/tree/v1) branch.
-
-## Lighthouse Audit Score
-
-<div align="center">
-    <a href="https://developers.google.com/web/tools/lighthouse/">
-      <img src="docs/pwa-score.png" alt="Lighthouse Score" />
-    </a>
-</div>
-
-Check out the [Features](#features) to read about all [Progressive Web App](https://developers.google.com/web/progressive-web-apps) capabilities of this starter in detail.
-
-## Why?
-
-This project aims to provide a minimal base for building advanced GatsbyJS powered websites.
-
-It doesn't define any UI limitations in any way and only gives you the basic components for SEO/Social Media/etc while creating a comfortable development environment to get started.
-
-You are free to use any UI framework/styling options.
-
-## How can I use this?
-
-If you are a newcomer to Gatsby who's interested in the implementations of most needed features, this is a great place to start.
-
-If you are interested in a foundation for building ultra-fast websites, you can use this project as a "minimal" starter.
-
-[Demo website.](https://gatsby-advanced-starter-demo.netlify.com)
+## Table of contents
++ [Features](http://github.com/alxshelepenok/gatsby-starter-lumen#features)
++ [Web Performance Tests](http://github.com/alxshelepenok/gatsby-starter-lumen#web-performance-tests)
++ [Quick Start](http://github.com/alxshelepenok/gatsby-starter-lumen#quick-start)
++ [Deploy with Netlify](http://github.com/alxshelepenok/gatsby-starter-lumen#deploy-with-netlify)
++ [Folder Structure](http://github.com/alxshelepenok/gatsby-starter-lumen#folder-structure)
++ [Sponsors](http://github.com/alxshelepenok/gatsby-starter-lumen#sponsors)
++ [Contributors](http://github.com/alxshelepenok/gatsby-starter-lumen#contributors)
++ [License](http://github.com/alxshelepenok/gatsby-starter-lumen#license)
 
 ## Features
++ [Lost Grid](http://lostgrid.org).
++ [Modern font stack](https://bitsofco.de/the-new-system-font-stack).
++ Beautiful typography inspired by [matejlatin/Gutenberg](https://github.com/matejlatin/Gutenberg).
++ Syntax highlighting in code blocks using [PrismJS](http://prismjs.com).
++ [Mobile-First](https://medium.com/@mrmrs_/mobile-first-css-48bc4cc3f60f) approach in development.
++ Archive organized by tags and categories.
++ Pagination support.
++ [Netlify CMS](https://www.netlifycms.org) support.
++ Google Analytics.
++ Disqus Comments.
++ [Flow](https://flow.org/) static type checking.
 
-- Gatsby v2 support
-- Blazing fast loading times thanks to pre-rendered HTML and automatic chunk loading of JS files
-- Posts in Markdown
-  - Code syntax highlighting
-  - Embed YouTube videos
-  - Embed Tweets
-- Pagination
-  - Configurable via `SiteConfig.js`
-- Tags
-  - Separate page for posts under each tag
-- Categories
-  - Separate page for posts under each category
-- [Disqus](https://disqus.com/) support
-  - Notifications about new disqus comments
-- `/static/` and content folders are available to use with [gatsby-image](https://www.gatsbyjs.org/docs/gatsby-image/) out of the box for optimized image generation
-- High configurability
-- Separate components for everything:
-  - User social profiles
-  - Copyright information
-  - More!
-- [NetlifyCMS](https://www.netlifycms.org) support out of the box
-- PWA features
-  - Offline support
-  - Web App Manifest support
-  - Loading progress for slow networks
-- SEO
-  - [Google Analytics](https://marketingplatform.google.com/about/analytics/) support
-  - Sitemap generation
-  - robots.txt
-  - General description tags
-  - [Schema.org JSONLD (Google Rich Snippets)](https://schema.org/)
-  - [OpenGraph Tags (Facebook/Google+/Pinterest)](https://ogp.me/)
-  - [Twitter Tags (Twitter Cards)](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/markup)
-- RSS feeds
-- Social features
-  - Twitter tweet button
-  - Facebook share/share count
-  - Reddit share/share count
-  - LinkedIn share button
-  - Telegram share button
-- Development tools
-  - [ESLint](https://eslint.org/) for linting
-  - [Prettier](https://prettier.io/) for code formatting
-  - Remark-Lint for linting Markdown
-  - write-good for linting English prose
-  - gh-pages for deploying to GitHub pages
-  - [Netlify](https://www.netlify.com/) deploy configuration
-  - [CodeClimate](https://codeclimate.com/) configuration file and badge
+## Web Performance Tests
++ Lighthouse Report - [WebPageTest](https://www.webpagetest.org/result/190510_FE_3f2b13d0beed320f477467d433f56f43/)
++ Visual Comparison - [WebPageTest](https://www.webpagetest.org/video/compare.php?tests=190510_KZ_1228c343ccf04148619a5d0b89a41f71,190510_RE_b3bfad442f32c690a9f420fe46025b8d,190510_RS_3b5f0bff2d95161351dc6934cadbf1cf,190510_SC_5c458c451941f81b12911ccf4171a817,190510_63_52d5edd8743773815fbacb2e9c66d228,190510_AS_741b29f5af5a6e54980d82826d7bb5bb)
 
-NOTE: Feel free to check out [Gatsby Material Starter](https://github.com/Vagr9K/gatsby-material-starter) if you are interested in a more opinionated starter with Material Design in mind.
+## Quick Start
 
-## Getting Started
+#### Create a Gatsby site
 
-Install this starter (assuming [Gatsby](https://github.com/gatsbyjs/gatsby/) is installed and updated) by running from your CLI:
+Use the Gatsby CLI to create a new site, specifying the Lumen starter.
 
 ```sh
-gatsby new YourProjectName https://github.com/Vagr9K/gatsby-advanced-starter
-npm run develop # or gatsby develop
+# Create a new Gatsby site using the Lumen starter
+gatsby new blog https://github.com/alxshelepenok/gatsby-starter-lumen
 ```
 
-Or you can fork the project, make your changes there and merge new features when needed.
+#### Start Developing
 
-Alternatively:
+Navigate into your new site’s directory and start it up.
 
 ```sh
-git clone https://github.com/Vagr9K/gatsby-advanced-starter YourProjectName # Clone the project
-cd YourProjectname
-rm -rf .git # So you can have your own changes stored in VCS.
-npm install # or yarn install
-npm run develop # or gatsby develop
+cd blog
+gatsby develop
 ```
 
-## Configuration
+#### Open the source code and start editing!
 
-Edit the export object in `data/SiteConfig`:
+Your site is now running at `http://localhost:8000`!
 
-```js
-module.exports = {
-  siteTitle: "Gatsby Advanced Starter", // Site title.
-  siteTitleShort: "GA Starter", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
-  siteTitleAlt: "GatsbyJS Advanced Starter", // Alternative site title for SEO.
-  siteLogo: "/logos/logo-1024.png", // Logo used for SEO and manifest.
-  siteUrl: "https://gatsby-advanced-starter-demo.netlify.com", // Domain of your website without pathPrefix.
-  pathPrefix: "/", // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-  siteDescription: "A GatsbyJS starter with Advanced design in mind.", // Website description used for RSS feeds/meta description tag.
-  siteRss: "/rss.xml", // Path to the RSS file.
-  siteRssTitle: "Gatsby Advanced Starter RSS feed", // Title of the RSS feed
-  siteFBAppID: "1825356251115265", // FB Application ID for using app insights
-  googleAnalyticsID: "UA-47311644-5", // GA tracking ID.
-  disqusShortname: "https-vagr9k-github-io-gatsby-advanced-starter", // Disqus shortname.
-  dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
-  dateFormat: "DD/MM/YYYY", // Date format for display.
-  postsPerPage: 4, // Amount of posts displayed per listing page. Set to zero to disable paging. See the "Pagination" section.
-  userName: "Advanced User", // Username to display in the author segment.
-  userEmail: "AdvancedUser@example.com", // Email used for RSS feed's author segment
-  userTwitter: "", // Optionally renders "Follow Me" in the UserInfo segment.
-  userLocation: "North Pole, Earth", // User location to display in the author segment.
-  userAvatar: "https://api.adorable.io/avatars/150/test.png", // User avatar to display in the author segment.
-  userDescription:
-    "Yeah, I like animals better than people sometimes... Especially dogs. Dogs are the best. Every time you come home, they act like they haven't seen you in a year. And the good thing about dogs... is they got different dogs for different people.", // User description to display in the author segment.
-  // Links to social profiles/projects you want to display in the author segment/navigation bar.
-  userLinks: [
-    {
-      label: "GitHub",
-      url: "https://github.com/Vagr9K/gatsby-advanced-starter",
-      iconClassName: "fa fa-github"
-    },
-    {
-      label: "Twitter",
-      url: "https://twitter.com/Vagr9K",
-      iconClassName: "fa fa-twitter"
-    },
-    {
-      label: "Email",
-      url: "mailto:vagr9k@gmail.com",
-      iconClassName: "fa fa-envelope"
-    }
-  ],
-  copyright: "Copyright © 2019. Advanced User", // Copyright string for the footer of the website and RSS feed.
-  themeColor: "#c62828", // Used for setting manifest and progress theme colors.
-  backgroundColor: "#e0e0e0" // Used for setting manifest background color.
-};
+Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
+
+Open the `blog` directory in your code editor of choice and edit `src/templates/index-template.js`. Save your changes and the browser will update in real time!
+
+## Deploy with Netlify
+
+[Netlify](https://netlify.com) CMS can run in any frontend web environment, but the quickest way to try it out is by running it on a pre-configured starter site with Netlify. Use the button below to build and deploy your own copy of the repository:
+
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/alxshelepenok/gatsby-starter-lumen" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+
+After clicking that button, you’ll authenticate with GitHub and choose a repository name. Netlify will then automatically create a repository in your GitHub account with a copy of the files from the template. Next, it will build and deploy the new site on Netlify, bringing you to the site dashboard when the build is complete. Next, you’ll need to set up Netlify’s Identity service to authorize users to log in to the CMS.
+
+## Deploy to Github Pages
+
+To deploy to github pages, simply do the following:
+
+- Ensure that your `package.json` file correctly reflects where this repo lives
+- Change the `pathPrefix` in your `config.js`
+- Run the standard deploy command
+
+```sh
+npm run deploy
 ```
 
-If want to customize Netlify CMS, e.g. registering custom widgets or styling the preview pane, you can do so by editing `src/netlifycms/index.js`:
 
-```js
-import CMS from "netlify-cms-app";
-
-CMS.init({
-  config: {
-    backend: {
-      name: "git-gateway"
-    }
-  }
-});
+#### Access Locally
+```
+$ git clone https://github.com/[GITHUB_USERNAME]/[REPO_NAME].git
+$ cd [REPO_NAME]
+$ yarn
+$ npm run develop
+```
+To test the CMS locally, you'll need run a production build of the site:
+```
+$ npm run build
+$ gatsby serve
 ```
 
-You can also optionally set `pathPrefix`:
+## Folder Structure
 
-```js
-module.exports = {
-  // Note: it must *not* have a trailing slash.
-  pathPrefix: "/gatsby-advanced-starter" // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
-};
+```
+└── content
+    ├── pages
+    └── posts
+└── static
+    ├── admin
+    └── media
+└── src
+    ├── assets
+    │   └── scss
+    │       ├── base
+    │       └── mixins
+    ├── cms
+    │   └── preview-templates
+    ├── components
+    │   ├── Feed
+    │   ├── Icon
+    │   ├── Layout
+    │   ├── Page
+    │   ├── Pagination
+    │   ├── Post
+    │   │   ├── Author
+    │   │   ├── Comments
+    │   │   ├── Content
+    │   │   ├── Meta
+    │   │   └── Tags
+    │   └── Sidebar
+    │       ├── Author
+    │       ├── Contacts
+    │       ├── Copyright
+    │       └── Menu
+    ├── constants
+    ├── templates
+    └── utils
+
 ```
 
-WARNING: Make sure to edit `static/robots.txt` to include your domain for the sitemap!
+## Sponsors
 
-## Pagination
+Development efforts are supported by the sponsors. I'm very grateful for their donations, please check them out!
 
-By default the starter will show 4 posts per page. The landing page is the first page located on `/` (controlled by the `Listing` component).
+| <a href="https://jetbrains.com" target="_blank"><img width="100" src="https://raw.githubusercontent.com/JetBrains/logos/master/web/jetbrains/jetbrains.svg"></a>  | <a href="https://www.browserstack.com" target="_blank"><img width="250" src="https://gist.githubusercontent.com/alxshelepenok/94cbc6dc4a2cb8167ee188ddab33893a/raw/f869c9a67db7bfd5440a49178195efe811d8f7d8/browserstack.svg"></a> |
+:---: |:---: |
 
-You can control the amount of posts via `SiteConfig` by setting the `postsPerPage: ${NUMBER}`.
+## Contributors
+Thanks goes to these wonderful people!
 
-NOTE: You can also disable the pagination by setting the `postsPerPage: 0`. In this case the landing page will be controlled by the `Landing` component.
+[<img alt="vzhou842" src="https://avatars3.githubusercontent.com/u/10209814?v=4&s=117" width="117">](https://github.com/vzhou842) |[<img alt="alehel" src="https://avatars2.githubusercontent.com/u/22277624?v=4&s=117" width="117">](https://github.com/alehel) |[<img alt="abisz" src="https://avatars3.githubusercontent.com/u/7287780?v=4&s=117" width="117">](https://github.com/abisz) |[<img alt="remi-bruguier" src="https://avatars0.githubusercontent.com/u/7031328?v=4&s=117" width="117">](https://github.com/remi-bruguier) |[<img alt="mariolopjr" src="https://avatars3.githubusercontent.com/u/2067324?v=4&s=117" width="117">](https://github.com/mariolopjr) |[<img alt="ihororlovskyi" src="https://avatars3.githubusercontent.com/u/7969737?v=4&s=117" width="117">](https://github.com/ihororlovskyi) |
+:---: |:---: |:---: |:---: |:---: |:---: |
+[vzhou842](https://github.com/vzhou842) |[alehel](https://github.com/alehel) |[abisz](https://github.com/abisz) |[remi-bruguier](https://github.com/remi-bruguier) |[mariolopjr](https://github.com/mariolopjr) |[ihororlovskyi](https://github.com/ihororlovskyi) |
 
-## NetlifyCMS
+[<img alt="timbroder" src="https://avatars2.githubusercontent.com/u/121503?v=4&s=117" width="117">](https://github.com/timbroder) |[<img alt="vinnymac" src="https://avatars0.githubusercontent.com/u/1832781?v=4&s=117" width="117">](https://github.com/vinnymac) |[<img alt="yodahuang" src="https://avatars2.githubusercontent.com/u/11242657?v=4&s=117" width="117">](https://github.com/yodahuang) |[<img alt="axelclark" src="https://avatars1.githubusercontent.com/u/16856928?v=4&s=117" width="117">](https://github.com/axelclark) |[<img alt="BigTony666" src="https://avatars2.githubusercontent.com/u/29159357?v=4&s=117" width="117">](https://github.com/BigTony666) |[<img alt="stigrune" src="https://avatars0.githubusercontent.com/u/1052748?v=4&s=117" width="117">](https://github.com/stigrune) |
+:---: |:---: |:---: |:---: |:---: |:---: |
+[timbroder](https://github.com/timbroder) |[vinnymac](https://github.com/vinnymac) |[yodahuang](https://github.com/yodahuang) |[axelclark](https://github.com/axelclark) |[BigTony666](https://github.com/BigTony666) |[stigrune](https://github.com/stigrune) |
 
-First of all, make sure to edit `static/admin/config.yml` and add your [GitHub/GitLab/NetlifyId credentials](https://www.netlifycms.org/docs/authentication-backends/):
+[<img alt="ybbarng" src="https://avatars2.githubusercontent.com/u/1793950?v=4&s=117" width="117">](https://github.com/ybbarng) |[<img alt="marktani" src="https://avatars1.githubusercontent.com/u/1780597?v=4&s=117" width="117">](https://github.com/marktani) |[<img alt="concreted" src="https://avatars2.githubusercontent.com/u/4016897?v=4&s=117" width="117">](https://github.com/concreted) |[<img alt="chmac" src="https://avatars0.githubusercontent.com/u/690997?v=4&s=117" width="117">](https://github.com/chmac) |[<img alt="charandas" src="https://avatars2.githubusercontent.com/u/542168?v=4&s=117" width="117">](https://github.com/charandas) |[<img alt="marcelabomfim" src="https://avatars0.githubusercontent.com/u/6224547?v=4&s=117" width="117">](https://github.com/marcelabomfim) |
+:---: |:---: |:---: |:---: |:---: |:---: |
+[ybbarng](https://github.com/ybbarng) |[marktani](https://github.com/marktani) |[concreted](https://github.com/concreted) |[chmac](https://github.com/chmac) |[charandas](https://github.com/charandas) |[marcelabomfim](https://github.com/marcelabomfim) |
 
-```yml
-backend:
-  name: github # Refer to https://www.netlifycms.org/docs/authentication-backends/ for auth backend list and instructions
-  branch: master # Branch to update
-  repo: vagr9k/gatsby-material-starter # Repo for pushing new commits. Make sure to replace with your repo!
-```
+[<img alt="zollillo" src="https://avatars3.githubusercontent.com/u/8833904?v=4&s=117" width="117">](https://github.com/zollillo) |[<img alt="codejet" src="https://avatars3.githubusercontent.com/u/802203?v=4&s=117" width="117">](https://github.com/codejet) |[<img alt="reed-jones" src="https://avatars0.githubusercontent.com/u/11511864?v=4&s=117" width="117">](https://github.com/reed-jones) |[<img alt="rtveitch" src="https://avatars3.githubusercontent.com/u/25228001?v=4&s=117" width="117">](https://github.com/rtveitch) |[<img alt="SayakaOno" src="https://avatars0.githubusercontent.com/u/33141219?v=4&s=117" width="117">](https://github.com/SayakaOno) |[<img alt="swapnilmishra" src="https://avatars2.githubusercontent.com/u/875450?v=4&s=117" width="117">](https://github.com/swapnilmishra) |
+:---: |:---: |:---: |:---: |:---: |:---: |
+[zollillo](https://github.com/zollillo) |[codejet](https://github.com/codejet) |[reed-jones](https://github.com/reed-jones) |[rtveitch](https://github.com/rtveitch) |[SayakaOno](https://github.com/SayakaOno) |[swapnilmishra](https://github.com/swapnilmishra) |
 
-You can visit `/admin/` after and will be greeted by a login dialog (depending on the auth provider you ave chosen above).
+[<img alt="vvasiloud" src="https://avatars1.githubusercontent.com/u/5891530?v=4&s=117" width="117">](https://github.com/vvasiloud) |[<img alt="vstoms" src="https://avatars2.githubusercontent.com/u/22646173?v=4&s=117" width="117">](https://github.com/vstoms) |[<img alt="wichopy" src="https://avatars2.githubusercontent.com/u/24414632?v=4&s=117" width="117">](https://github.com/wichopy) |[<img alt="yairmark" src="https://avatars1.githubusercontent.com/u/28291977?v=4&s=117" width="117">](https://github.com/yairmark) |
+:---: |:---: |:---: |:---: |
+[vvasiloud](https://github.com/vvasiloud) |[vstoms](https://github.com/vstoms) |[wichopy](https://github.com/wichopy) |[yairmark](https://github.com/yairmark) |
 
-For NetlifyCMS specific issues visit the [official documentation](https://www.netlifycms.org/docs/intro/).
+## License
+The MIT License (MIT)
 
-# Author
+Copyright (c) 2016-2020 Alexander Shelepenok
 
-Ruben Harutyunyan ([@Vagr9K](https://twitter.com/Vagr9K))
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

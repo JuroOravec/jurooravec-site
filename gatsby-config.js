@@ -3,8 +3,6 @@
 const siteConfig = require("./config.js");
 const postCssPlugins = require("./postcss-config.js");
 
-console.log(postCssPlugins.map(p => p.toString()));
-
 module.exports = {
   pathPrefix: siteConfig.pathPrefix,
   siteMetadata: {

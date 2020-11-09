@@ -1,50 +1,52 @@
-'use strict';
+"use strict";
+
+const bio = "Biotech. Web tech. Observations. Runner.";
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
-  pathPrefix: '/',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
-  copyright: '© All rights reserved.',
-  disqusShortname: '',
-  postsPerPage: 4,
-  googleAnalyticsId: 'UA-73379983-2',
+  url: "https://jurora.vc",
+  pathPrefix: "/",
+  title: "Blog by Juro Oravec",
+  subtitle: bio,
+  copyright: "© All rights reserved.",
+  disqusShortname: "",
+  postsPerPage: 10,
+  googleAnalyticsId: null,
   useKatex: false,
   menu: [
     {
-      label: 'Articles',
-      path: '/'
+      label: "Articles",
+      path: "/",
     },
-    {
-      label: 'About me',
-      path: '/pages/about'
-    },
-    {
-      label: 'Contact me',
-      path: '/pages/contacts'
-    }
+    // {
+    //   label: "About me",
+    //   path: "/pages/about",
+    // },
+    // {
+    //   label: "Contact me",
+    //   path: "/pages/contacts",
+    // },
   ],
   author: {
-    name: 'John Doe',
-    photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    name: "Juro Oravec",
+    photo: "/photo.jpg",
+    bio,
     contacts: {
-      email: '',
-      facebook: '#',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
-      rss: '',
-      vkontakte: '',
-      linkedin: '#',
-      instagram: '#',
-      line: '',
-      gitlab: '',
-      weibo: '',
-      codepen: '',
-      youtube: '',
-      soundcloud: '',
-      medium: '',
-    }
-  }
+      email: "juraj.oravec.josefson@gmail.com",
+      facebook: "juro.oravec",
+      telegram: "",
+      twitter: "jurooravec",
+      github: "jurooravec",
+      rss: "",
+      vkontakte: "",
+      linkedin: "jurooravec",
+      instagram: "jurooravec",
+      line: "",
+      gitlab: "",
+      weibo: "",
+      codepen: "",
+      youtube: "",
+      soundcloud: "",
+      medium: "",
+    },
+  },
 };

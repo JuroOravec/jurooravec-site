@@ -1,0 +1,42 @@
+@mixin post {
+  h1 {
+    font-family: sans-serif !important;
+    font-size: 3rem !important;
+    font-weight: bold !important;
+    padding-bottom: 48px !important;
+
+    // Taken from .text-h2
+    line-height: 3.75rem;
+    letter-spacing: -0.0083333333em !important;
+    font-family: "Roboto", sans-serif !important;
+  }
+
+  h2 {
+    font-family: sans-serif !important;
+    font-size: 3rem !important;
+    font-weight: 400 !important;
+    padding-bottom: 32px !important;
+  }
+
+  h3 {
+    font-family: sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    padding-bottom: 32px !important;
+  }
+
+  h4,
+  h5,
+  h6 {
+    padding-bottom: 24px;
+  }
+
+  p, pre {
+    margin-bottom: 40px;
+  }
+
+  .post-subsection {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+  }
+}

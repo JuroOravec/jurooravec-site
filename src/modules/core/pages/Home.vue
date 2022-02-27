@@ -13,7 +13,7 @@
     </div>
     <div class="pt-16 text-center">
       <h2 class="Hero__subtitle secondary--text text--lighten-3">
-        Save your time
+        Mind the time
       </h2>
       <h4 class="secondary--text text--lighten-5">
         {{ countdown }}

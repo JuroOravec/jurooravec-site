@@ -37,8 +37,7 @@
           <li>
             <strong>Pharma / Drug discovery</strong> - Exploratory, management, and workflow Drug discovery tools at
             <a href="https://benevolent.ai/" rel="nofollow noopener noreferrer">
-              BenevolentAI
-            </a>.
+              BenevolentAI</a>.
           </li>
           <li>
             <strong>Biotech / Bioinformatics</strong> -
@@ -48,8 +47,7 @@
             </a>
             (DD-DeCaF project) at
             <a href="https://www.biosustain.dtu.dk/" rel="nofollow noopener noreferrer">
-              The Novo Nordisk Foundation Center for Biosustainability (DTU Biosustain)
-            </a>.
+              The Novo Nordisk Foundation Center for Biosustainability (DTU Biosustain)</a>.
           </li>
           <li>
             <strong>Marketing automation / Digital experience platform</strong> -

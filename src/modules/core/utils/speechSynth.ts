@@ -1,23 +1,47 @@
 import keyBy from 'lodash/keyBy';
 
+const SpeechSynth: SpeechSynthesis | null = globalThis?.speechSynthesis ?? null;
+const SpeechUtterance: typeof SpeechSynthesisUtterance | null =
+  globalThis?.SpeechSynthesisUtterance ?? null;
+
 const createUtterance = (): SpeechSynthesisUtterance => {
-  if (!globalThis?.SpeechSynthesisUtterance) {
+  if (!SpeechUtterance) {
     return {} as SpeechSynthesisUtterance;
   }
-  return new globalThis.SpeechSynthesisUtterance();
+  return new SpeechUtterance();
 };
 
-export const createSpeechSynth = () => {
+const getSpeechVoices = (): Promise<SpeechSynthesisVoice[]> =>
+  // Voice loading is async.
+  // See https://stackoverflow.com/a/52005323/9788634
+  new Promise((res, rej) => {
+    let id;
+
+    id = setInterval(() => {
+      const voices = SpeechSynth?.getVoices() ?? [];
+
+      if (!voices.length) {
+        return;
+      }
+
+      res(SpeechSynth?.getVoices());
+      clearInterval(id);
+    }, 10);
+  });
+
+export const createSpeechSynth = (
+  // Selected voices are good-sounding voices where localService === true & voice.lang.toLowerCase().startsWith('en')
+  preferredVoiceURIs: string[] = ['tessa', 'moira', 'samantha'],
+) => {
   const utterance = createUtterance();
 
-  const loadVoice = (): void => {
-    // Good-sounding voices where localService === true & voice.lang.toLowerCase().startsWith('en')
-    const preferredVoicesURIs = ['tessa', 'moira', 'samantha'];
-    const availableVoices = keyBy(globalThis?.speechSynthesis?.getVoices(), (voice) =>
+  const loadVoice = async (): Promise<void> => {
+    const availableVoices = keyBy(await getSpeechVoices(), (voice) =>
       voice.voiceURI.toLowerCase(),
     );
+
     // Find first matching voice, in order of preference
-    const preferredVoice = preferredVoicesURIs.find(
+    const preferredVoice = preferredVoiceURIs.find(
       (voiceURI) => availableVoices[voiceURI],
     );
 
@@ -25,9 +49,9 @@ export const createSpeechSynth = () => {
   };
 
   const speak = (text: string) => {
-    if (globalThis?.speechSynthesis?.speaking) return;
+    if (SpeechSynth?.speaking) return;
     utterance.text = text;
-    globalThis?.speechSynthesis.speak(utterance);
+    SpeechSynth.speak(utterance);
   };
 
   return {

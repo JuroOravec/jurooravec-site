@@ -69,18 +69,12 @@ Entrypoint for gridsome client (Vue).
 
 Entrypoint for Vue app.
 
-#### `/src/pages`
-
-Vue components that serve as pages (page entrypoints).
-
-> **Note:** The directory path is set by [gridsome](https://gridsome.org/docs/pages/#file-based-pages). If you want to store the page SFC files in different directories, you'll have to set the [pages programmatically](https://gridsome.org/docs/pages/#programmatic-pages).
-
-
 #### `/src/modules`
 
 Project features, content, etc, are split into separate modules that house related files together.
 
 Some of the files you may find in modules are:
+
 - `myModule.gridsome.server.ts` -- File imported by [gridsome.server.ts](./src/gridsome.server.ts)
 - `myModule.gridsome.config.ts` -- File imported by [gridsome.config.ts](./src/gridsome.config.ts)
 - `myModule.gridsome.client.ts` -- File imported by [main.js](./src/main.js)
@@ -91,9 +85,12 @@ Some of the files you may find in modules are:
 - `myModuleTypes.ts` -- Other types relevant to this module
 - `content` -- Markdown (file-based) content that's imported with `@gridsome/source-filesystem`. These are turned into posts (e.g. blogs)
 - `style` -- Styling (`css` / `scss` files) for this module
+- `assets` -- Static assets used by this module
 - `components` -- `.vue` components.
   - Files suffixed with `Template` are used as [gridsome templates](https://gridsome.org/docs/templates)
+- `pages` -- `.vue` components loaded as pages. These are loaded in respective `gridsome.server.ts`
 - `utils`
+
 #### `/src/typings`
 
 TypeScript shims -- type definitions for third party libraries.

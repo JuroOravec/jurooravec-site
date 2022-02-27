@@ -20,8 +20,8 @@ query getMetaMetadata {
       localeJava
     }
     social {
-      orgTwitterHandle
-      userTwitterHandle
+      twitter
+      twitterOrg
     }
   }
 }
@@ -143,7 +143,7 @@ const Meta = defineComponent({
     const queryResult = useStaticQuery<
       GqlgetMetaMetadataQuery,
       GqlgetMetaMetadataQuery
-    >((data) => data);
+    >((data) => data ?? {});
     const siteName = computed((): string | null => queryResult.value?.metadata?.siteName ?? null); // prettier-ignore
     const siteUrl = computed((): string | null => queryResult.value?.metadata?.siteUrl ?? null); // prettier-ignore
     const siteAuthor = computed((): string | null => queryResult.value?.metadata?.siteAuthor?.fullName ?? null); // prettier-ignore
@@ -181,13 +181,16 @@ const Meta = defineComponent({
       return locales?.value ?? [defaultLocale];
     });
 
+    const formatTwitterUsername = (twitter?: string | undefined | null) =>
+      twitter ? `@${twitter}` : null;
+
     const twitterSummary = computed(
       (): CreateMetaInfoArgs['twitterSummary'] => {
+        const userTwitter = queryResult.value?.metadata?.social?.twitter;
+        const orgTwitter = queryResult.value?.metadata?.social?.twitterOrg;
         return {
-          orgTwitterHandle:
-            queryResult.value?.metadata?.social?.orgTwitterHandle ?? null,
-          userTwitterHandle:
-            queryResult.value?.metadata?.social?.userTwitterHandle ?? null,
+          orgTwitter: formatTwitterUsername(orgTwitter),
+          userTwitter: formatTwitterUsername(userTwitter),
           title: usedPageTitle.value,
           description: pageDescription?.value ?? null,
           imageUrl: (pageImages.value?.[0]?.url as GqlImageFit) ?? null,
@@ -199,14 +202,10 @@ const Meta = defineComponent({
     const twitterPlayer = computed((): CreateMetaInfoArgs['twitterPlayer'] => {
       if (!ogVideo?.value) return null;
 
-      const { orgTwitterHandle, userTwitterHandle } =
-        queryResult.value?.metadata?.social ?? {};
+      const { twitterOrg, twitter } = queryResult.value?.metadata?.social ?? {};
       return {
-        orgTwitterHandle: orgTwitterHandle?.length
-          ? orgTwitterHandle
-          : userTwitterHandle?.length
-          ? userTwitterHandle
-          : null,
+        orgTwitter:
+          formatTwitterUsername(twitterOrg) ?? formatTwitterUsername(twitter),
         title: usedPageTitle.value,
         description: pageDescription?.value ?? null,
         imageUrl: pageImages.value?.[0]?.url ?? null,

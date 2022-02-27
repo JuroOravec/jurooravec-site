@@ -112,8 +112,11 @@ export const createMetaInfo = ({
   const usedTitle = pageTitle === true ? siteName : pageTitle;
 
   /** Default way of how the page template is rendered */
-  const titleTemplate: MetaInfo['titleTemplate'] = (title) =>
-    title && siteName ? `${title} - ${siteName}` : title ?? siteName ?? '';
+  const titleTemplate: MetaInfo['titleTemplate'] = (title) => {
+    return title && siteName
+      ? `${title} - ${siteName}`
+      : title || siteName || '';
+  };
 
   //////////////////////////////
   // HTML ATTRIBUTES
@@ -275,6 +278,7 @@ export const createMetaInfo = ({
   // const base = { ... },
 
   return {
+    title: usedTitle ?? undefined,
     titleTemplate,
     meta: metaTags,
     htmlAttrs,

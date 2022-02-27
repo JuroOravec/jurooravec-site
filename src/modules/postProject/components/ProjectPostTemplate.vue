@@ -4,12 +4,11 @@
     :post="project"
     fallback-title="Project"
   >
-    <template #before-comments>
-      <RelatedPosts
-        title="Related posts"
-        :posts="relatedBlogs"
-        class="mb-12"
-      />
+    <template #before-content>
+      <ProjectSummary :post="project" class="mb-12" />
+    </template>
+    <template #after-content>
+      <RelatedPosts title="Related posts" :posts="relatedBlogs" class="mb-12" />
     </template>
   </PostLayout>
 </template>
@@ -28,6 +27,8 @@ query getProjectPostByPath ($id: ID!) {
       fullName
       url
     }
+    projectUrl
+    projectStatus
     datePublished
     dateModified
     dateExpired
@@ -99,12 +100,20 @@ query getProjectPostByPath ($id: ID!) {
 <script lang="ts">
 import { computed, defineComponent } from '@vue/composition-api';
 
-import { usePageQuery } from '@/modules/core/utils/useGridsomeQuery';
 import type { GqlgetProjectPostByPathQuery } from '@/__generated__/graphql';
-import RelatedPosts from '@/modules/post/components/RelatedPosts.vue';
-import PostLayout from '@/modules/post/components/PostLayout.vue';
+import { usePageQuery } from '@/modules/core/utils/useGridsomeQuery';
+import RelatedPosts, {
+  RelatedPost,
+} from '@/modules/post/components/RelatedPosts.vue';
+import PostLayout, {
+  PostInPostLayout,
+} from '@/modules/post/components/PostLayout.vue';
+import ProjectSummary, { ProjectInProjectSummary } from './ProjectSummary.vue';
 
-type ProjectPostResult = NonNullable<GqlgetProjectPostByPathQuery['post']>;
+type ProjectInTemplate = ProjectInProjectSummary &
+  PostInPostLayout & {
+    relatedBlogs: RelatedPost[];
+  };
 
 /**
  * This component is used as gridsome template for ProjectPost.
@@ -116,12 +125,15 @@ const ProjectPostTemplate = defineComponent({
   components: {
     PostLayout,
     RelatedPosts,
+    ProjectSummary,
   },
   setup() {
     const project = usePageQuery<
       GqlgetProjectPostByPathQuery,
-      ProjectPostResult | null
-    >((result) => result.post ?? null);
+      ProjectInTemplate | null
+    >((result) => {
+      return (result?.post ?? null) as ProjectInTemplate | null;
+    });
 
     const relatedBlogs = computed(() => project.value?.relatedBlogs ?? []);
 

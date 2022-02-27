@@ -1,4 +1,4 @@
-import { defaults } from 'lodash';
+import defaults from 'lodash/defaults';
 
 import type { PostType } from '@/modules/post/postTypes';
 

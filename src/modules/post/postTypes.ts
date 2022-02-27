@@ -98,6 +98,15 @@ export interface PostInput {
   mainVideo: PostOgVideoInput;
   videos: PostVideoInput[];
   audios: PostAudioInput[];
+  /**
+   * Whether this post should be ignored. Ignored posts are not included
+   * in the collection, hence:
+   * - No page is generated
+   * - Not included in recommendations (related posts)
+   * - Not included in RSS
+   * - Not included in sitexml
+   */
+  ignore?: boolean;
 }
 
 //////////////////////////

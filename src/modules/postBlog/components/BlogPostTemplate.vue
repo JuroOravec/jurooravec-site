@@ -1,15 +1,10 @@
 <template>
-  <PostLayout
-    class="BlogPostTemplate"
-    :post="blog"
-    fallback-title="Blog"
-  >
-    <template #before-comments>
-      <RelatedPosts
-        title="Related posts"
-        :posts="relatedBlogs"
-        class="mb-12"
-      />
+  <PostLayout class="BlogPostTemplate" :post="blog" fallback-title="Blog">
+    <template #before-content>
+      <BlogSummary :post="blog" class="mb-12" />
+    </template>
+    <template #after-content>
+      <RelatedPosts title="Related posts" :posts="relatedBlogs" class="mb-12" />
     </template>
   </PostLayout>
 </template>
@@ -117,6 +112,7 @@ import { usePageQuery } from '@/modules/core/utils/useGridsomeQuery';
 import type { GqlgetBlogPostByPathQuery } from '@/__generated__/graphql';
 import RelatedPosts from '@/modules/post/components/RelatedPosts.vue';
 import PostLayout from '@/modules/post/components/PostLayout.vue';
+import BlogSummary from './BlogSummary.vue';
 
 type BlogPostResult = NonNullable<GqlgetBlogPostByPathQuery['post']>;
 
@@ -129,13 +125,13 @@ const BlogPostTemplate = defineComponent({
   name: 'BlogPostTemplate',
   components: {
     PostLayout,
+    BlogSummary,
     RelatedPosts,
   },
   setup() {
-    const blog = usePageQuery<
-      GqlgetBlogPostByPathQuery,
-      BlogPostResult | null
-    >((result) => result.post ?? null);
+    const blog = usePageQuery<GqlgetBlogPostByPathQuery, BlogPostResult | null>(
+      (result) => result?.post ?? null,
+    );
 
     const relatedBlogs = computed(() => blog.value?.related ?? []);
 

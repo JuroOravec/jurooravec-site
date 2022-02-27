@@ -1,9 +1,13 @@
-import Vuetify from 'vuetify';
+import type VuetifyType from 'vuetify'; // Imported to load the TS types
+import Vuetify from 'vuetify/lib';
 
 import type { GridsomeClientPlugin } from '@/typings/gridsome';
 
 // See https://gridsome.org/docs/assets-css/#vuetify
-export const vuetifyGridsomeClientPlugin: GridsomeClientPlugin = (Vue, { appOptions, head }) => {
+export const vuetifyGridsomeClientPlugin: GridsomeClientPlugin = (
+  Vue,
+  { appOptions, head },
+) => {
   head.link.push({
     rel: 'stylesheet',
     href: 'https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css',
@@ -22,5 +26,11 @@ export const vuetifyGridsomeClientPlugin: GridsomeClientPlugin = (Vue, { appOpti
   });
 
   // See Vuetify docs for details
-  appOptions.vuetify = new Vuetify();
+  appOptions.vuetify = new Vuetify({
+    theme: {
+      options: {
+        customProperties: true,
+      },
+    },
+  });
 };

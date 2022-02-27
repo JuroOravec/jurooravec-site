@@ -2,7 +2,7 @@ import type { Item, FeedOptions } from 'feed';
 
 import type { GridsomeConfig } from '@/typings/gridsome';
 import { PostType, PostCollectionNode } from '@/modules/post/postTypes';
-import { metadata } from './metadata.gridsome.config';
+import { metadata } from '../metadata';
 
 /////////////////////////////////////
 // gridsome-plugin-feed CONFIG

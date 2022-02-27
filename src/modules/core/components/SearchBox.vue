@@ -1,6 +1,6 @@
 <template>
   <div
-    class="SearchBox"
+    class="SearchBox link-soft"
     :class="{ 'SearchBox--dense': dense }"
     :id="componentId"
   >
@@ -60,9 +60,8 @@ import {
   toRefs,
   watch,
   PropType,
-  triggerRef,
 } from '@vue/composition-api';
-import { uniqueId } from 'lodash';
+import uniqueId from 'lodash/uniqueId';
 import {
   VAutocomplete,
   VIcon,

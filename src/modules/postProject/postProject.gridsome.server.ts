@@ -1,9 +1,20 @@
 import { print as printTypeDef } from 'graphql/language/printer';
 
-import type { GridsomeServerPlugin } from '@/typings/gridsome';
+import type {
+  GridsomePluginCreatePageOptions,
+  GridsomeServerPlugin,
+} from '@/typings/gridsome';
 import { createRelatedPostsResolver } from '../post/postResolvers';
 import { PostType } from '../post/postTypes';
 import { projectPostSchema } from './postProjectSchema';
+import { PostProjectRoutes } from './postProjectTypes';
+
+const postProjectPages: GridsomePluginCreatePageOptions[] = [
+  {
+    path: PostProjectRoutes.PROJECTS,
+    component: './src/modules/postProject/pages/Projects.vue',
+  },
+];
 
 export const postProjectGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
   api.loadSource(({ addSchemaTypes, addSchemaResolvers, getNode }) => {
@@ -23,5 +34,9 @@ export const postProjectGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
         }),
       },
     });
+  });
+
+  api.createPages(({ createPage }) => {
+    postProjectPages.forEach((pageOptions) => createPage(pageOptions));
   });
 };

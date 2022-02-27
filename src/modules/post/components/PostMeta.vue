@@ -114,7 +114,7 @@ const createPostMetaArgs = ({
 
   return {
     pageUrl,
-    pageTitle: pageTitle,
+    pageTitle,
     pageDescription,
     pageTags,
     audios,

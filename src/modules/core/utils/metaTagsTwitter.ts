@@ -1,8 +1,9 @@
-import { Maybe } from '@/__generated__/graphql';
+import type { Maybe } from '@/__generated__/graphql';
 import { initMetaTagsList } from './metaTags';
 
 export interface CreateTwitterSummaryCardMetaTagsArgs {
-  orgTwitterHandle: Maybe<string>;
+  /** Organisation's twitter handle (including `@`, e.g. @nytimes) */
+  orgTwitter: Maybe<string>;
   title: Maybe<string>;
   description: Maybe<string>;
   imageUrl: Maybe<string>;
@@ -17,7 +18,7 @@ export interface CreateTwitterSummaryCardMetaTagsArgs {
  * Validate at https://cards-dev.twitter.com/validator
  */
 export const createTwitterSummaryCardMetaTags = ({
-  orgTwitterHandle,
+  orgTwitter,
   title,
   description,
   imageUrl,
@@ -26,7 +27,7 @@ export const createTwitterSummaryCardMetaTags = ({
   const { metaTags, addKVMetaTag } = initMetaTagsList();
 
   addKVMetaTag('twitter:card', 'summary');
-  addKVMetaTag('twitter:site', orgTwitterHandle?.length ? orgTwitterHandle : null);
+  addKVMetaTag('twitter:site', orgTwitter?.length ? orgTwitter : null);
   addKVMetaTag('twitter:title', title);
   addKVMetaTag('twitter:description', description);
   addKVMetaTag('twitter:image', imageUrl);
@@ -36,8 +37,10 @@ export const createTwitterSummaryCardMetaTags = ({
 };
 
 export interface CreateTwitterLargeImageSummaryCardMetaTagsArgs {
-  orgTwitterHandle: Maybe<string>;
-  userTwitterHandle: Maybe<string>;
+  /** Organisation's twitter handle (including `@`, e.g. @nytimes) */
+  orgTwitter: Maybe<string>;
+  /** Author's twitter handle (including `@`, e.g. @jurooravec) */
+  userTwitter: Maybe<string>;
   title: Maybe<string>;
   description: Maybe<string>;
   imageUrl: Maybe<string>;
@@ -52,8 +55,8 @@ export interface CreateTwitterLargeImageSummaryCardMetaTagsArgs {
  * Validate at https://cards-dev.twitter.com/validator
  */
 export const createTwitterLargeImageSummaryCardMetaTags = ({
-  orgTwitterHandle,
-  userTwitterHandle,
+  orgTwitter,
+  userTwitter,
   title,
   description,
   imageUrl,
@@ -62,8 +65,8 @@ export const createTwitterLargeImageSummaryCardMetaTags = ({
   const { metaTags, addKVMetaTag } = initMetaTagsList();
 
   addKVMetaTag('twitter:card', 'summary_large_image');
-  addKVMetaTag('twitter:site', orgTwitterHandle?.length ? orgTwitterHandle : null);
-  addKVMetaTag('twitter:creator', userTwitterHandle?.length ? userTwitterHandle : null);
+  addKVMetaTag('twitter:site', orgTwitter?.length ? orgTwitter : null);
+  addKVMetaTag('twitter:creator', userTwitter?.length ? userTwitter : null);
   addKVMetaTag('twitter:title', title);
   addKVMetaTag('twitter:description', description);
   addKVMetaTag('twitter:image', imageUrl);
@@ -73,7 +76,8 @@ export const createTwitterLargeImageSummaryCardMetaTags = ({
 };
 
 export interface CreateTwitterPlayerCardMetaTagsArgs {
-  orgTwitterHandle: Maybe<string>;
+  /** Organisation's twitter handle (including `@`, e.g. @nytimes) */
+  orgTwitter: Maybe<string>;
   title: Maybe<string>;
   description: Maybe<string>;
   videoOrAudioUrl: Maybe<string>;
@@ -91,7 +95,7 @@ export interface CreateTwitterPlayerCardMetaTagsArgs {
  * Validate at https://cards-dev.twitter.com/validator
  */
 export const createTwitterPlayerCardMetaTags = ({
-  orgTwitterHandle,
+  orgTwitter,
   title,
   description,
   videoOrAudioUrl,
@@ -103,12 +107,18 @@ export const createTwitterPlayerCardMetaTags = ({
   const { metaTags, addKVMetaTag } = initMetaTagsList();
 
   addKVMetaTag('twitter:card', 'player');
-  addKVMetaTag('twitter:site', orgTwitterHandle?.length ? orgTwitterHandle : null);
+  addKVMetaTag('twitter:site', orgTwitter?.length ? orgTwitter : null);
   addKVMetaTag('twitter:title', title);
   addKVMetaTag('twitter:description', description);
   addKVMetaTag('twitter:player', videoOrAudioUrl);
-  addKVMetaTag('twitter:player:width', videoOrAudioWidth ? `${videoOrAudioWidth}` : null);
-  addKVMetaTag('twitter:player:height', videoOrAudioHeight ? `${videoOrAudioHeight}` : null);
+  addKVMetaTag(
+    'twitter:player:width',
+    videoOrAudioWidth ? `${videoOrAudioWidth}` : null,
+  );
+  addKVMetaTag(
+    'twitter:player:height',
+    videoOrAudioHeight ? `${videoOrAudioHeight}` : null,
+  );
   addKVMetaTag('twitter:image', imageUrl);
   addKVMetaTag('twitter:image:alt', imageAlt);
 

@@ -2,7 +2,7 @@
   <v-app-bar
     app
     color="white"
-    class="AppHeader"
+    class="AppHeader link-soft"
     :class="{ 'AppHeader--large': large }"
     elevate-on-scroll
   >
@@ -52,7 +52,7 @@ import {
   VAppBarNavIcon,
   VAppBarTitle,
   VToolbarTitle,
-} from 'vuetify/lib';
+} from 'vuetify/lib/components';
 
 import SearchBox from './SearchBox.vue';
 import type { NavItem } from '../coreTypes';
@@ -100,6 +100,8 @@ export default AppHeader;
 
 <style lang="scss">
 .AppHeader {
+  z-index: 10;
+
   .v-toolbar__content {
     max-width: 960px;
     margin: auto;
@@ -122,6 +124,13 @@ export default AppHeader;
         top: 110%;
         left: -20%;
       }
+    }
+  }
+
+  &#{&}--large {
+    .v-toolbar__content {
+      padding-left: 32px;
+      padding-right: 32px;
     }
   }
 }

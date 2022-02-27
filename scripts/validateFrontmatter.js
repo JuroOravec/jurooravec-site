@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const fm = require('front-matter');
 
+const { resolveFrontmatterMetadata } = require('../dist/gridsome/modules/post/utils');
+
 const COMPATIBLE_PLUGINS = {
   '@gridsome/source-filesystem': {
     // Define whether, given the plugin and its options, it is possible
@@ -77,9 +79,10 @@ const validateFilesystemPluginMarkdownFiles = (plugin) => {
     fileNames.forEach((fileName) => {
       const fileContent = fs.readFileSync(fileName, 'utf-8');
       const frontmatterData = fm(fileContent);
+      const frontmatterAttrs = resolveFrontmatterMetadata(frontmatterData.attributes);
 
       try {
-        Joi.assert(frontmatterData.attributes, validationSchema);
+        Joi.assert(frontmatterAttrs, validationSchema);
       } catch (err) {
         if (err) {
           err.message = `${err.message} (file ${fileName} from glob ${pattern} for type ${typeName})`;

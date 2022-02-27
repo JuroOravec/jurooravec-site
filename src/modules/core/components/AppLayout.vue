@@ -5,6 +5,7 @@
     <AppHeader
       :nav-items="navItems"
       :large="isLarge"
+      class="link-soft"
       @menu-icon-click="toggleDrawer"
     />
 
@@ -13,6 +14,7 @@
       v-model="isDrawerOpen"
       absolute
       temporary
+      class="link-soft"
     >
       <v-list nav dense>
         <v-list-item-group active-class="primary--text text--accent-4">
@@ -30,7 +32,7 @@
     </v-navigation-drawer>
 
     <v-main>
-      <v-container fluid class="px-16">
+      <v-container fluid :class="isLarge ? 'px-16' : 'px-8'">
         <slot name="default" />
       </v-container>
     </v-main>
@@ -60,7 +62,7 @@ import {
   VListItem,
   VListItemGroup,
   VListItemTitle,
-} from 'vuetify/lib';
+} from 'vuetify/lib/components';
 
 import AppHeader from './AppHeader.vue';
 import AppFooter from './AppFooter.vue';
@@ -68,6 +70,8 @@ import Meta from './Meta.vue';
 import PostMeta from '@/modules/post/components/PostMeta.vue';
 import type { NavItem } from '../coreTypes';
 import AppHeaderHomeLink from './AppHeaderHomeLink.vue';
+import { PostProjectRoutes } from '@/modules/postProject/postProjectTypes';
+import { PostBlogRoutes } from '@/modules/postBlog/postBlogTypes';
 
 export enum LayoutType {
   POST = 'post',
@@ -80,8 +84,8 @@ const layoutTypeToComponent: Record<LayoutType, Component> = {
 };
 
 const navItems: NavItem[] = [
-  { to: '/blog', text: 'Blog' },
-  { to: '/project', text: 'Projects' },
+  { to: PostBlogRoutes.BLOGS, text: 'Blog' },
+  { to: PostProjectRoutes.PROJECTS, text: 'Projects' },
   { to: '/about', text: 'About' },
 ];
 
@@ -150,6 +154,7 @@ export default AppLayout;
 
 <style lang="scss">
 .AppLayout {
+  width: 100%;
   max-width: 960px;
   margin: auto;
 }

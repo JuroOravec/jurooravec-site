@@ -2,12 +2,16 @@ import { print as printTypeDef } from 'graphql/language/printer';
 import readingTime from 'reading-time';
 
 import type { GridsomeServerPlugin } from '@/typings/gridsome';
-import { PostCollectionNode, PostInput } from './postTypes';
+import type { PostCollectionNode, PostInput } from './postTypes';
 import { postSchema } from './postSchema';
 import { PostResourceType, PostType } from './postTypes';
 import { imageSizeResolver, mimeTypeResolver } from './postResolvers';
 import type { CollectionNode } from '../core/coreModel';
-import { getPostCanonicalUrl, getPostPersonFullName } from './utils';
+import {
+  getPostCanonicalUrl,
+  getPostPersonFullName,
+  resolveFrontmatterMetadata,
+} from './utils';
 
 export const postGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
   api.loadSource(({ addSchemaTypes, addSchemaResolvers }) => {
@@ -34,29 +38,41 @@ export const postGridsomeServerPlugin: GridsomeServerPlugin = (api) => {
 
   /** Common transformation for all Post nodes */
   api.onCreateNode(
-    (node: CollectionNode & PostInput): PostCollectionNode | undefined => {
-      if (!Object.values(PostType).includes(node.internal.typeName as PostType))
+    (
+      node: CollectionNode & PostInput,
+    ): PostCollectionNode | null | undefined => {
+      if (
+        !Object.values(PostType).includes(node.internal.typeName as PostType)
+      ) {
         return;
+      }
 
+      // Resolve custom values like '$metadata.siteAuthor' to the
+      // actual values from metadata.
+      const nodeWithMetadata = resolveFrontmatterMetadata(node);
+
+      if (nodeWithMetadata.ignore) return null;
+
+      // Transform / enrich the fields parsed from frontmatter
       const enrichedPost: PostCollectionNode = {
-        ...node,
+        ...nodeWithMetadata,
         internal: {
-          ...node.internal,
-          typeName: node.internal.typeName as PostType,
+          ...nodeWithMetadata.internal,
+          typeName: nodeWithMetadata.internal.typeName as PostType,
         },
-        canonicalUrl: getPostCanonicalUrl(node),
-        authors: node.authors.map((author) => ({
+        canonicalUrl: getPostCanonicalUrl(nodeWithMetadata),
+        authors: nodeWithMetadata.authors.map((author) => ({
           ...author,
           fullName: getPostPersonFullName(author),
         })),
-        contributors: node.contributors.map((contributor) => ({
+        contributors: nodeWithMetadata.contributors.map((contributor) => ({
           ...contributor,
           fullName: getPostPersonFullName(contributor),
         })),
-        datePublished: node.datePublished as any as Date,
-        dateModified: node.dateModified as any as Date,
-        dateExpired: node.dateModified as any as Date | null,
-        timeToRead: readingTime(node.content || ''),
+        datePublished: nodeWithMetadata.datePublished as any as Date,
+        dateModified: nodeWithMetadata.dateModified as any as Date,
+        dateExpired: nodeWithMetadata.dateModified as any as Date | null,
+        timeToRead: readingTime(nodeWithMetadata.content || ''),
       };
 
       return enrichedPost;

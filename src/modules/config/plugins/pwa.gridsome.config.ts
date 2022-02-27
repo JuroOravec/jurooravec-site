@@ -1,5 +1,5 @@
 import type { GridsomeConfig } from '@/typings/gridsome';
-import { metadata } from './metadata.gridsome.config';
+import { metadata } from '../metadata';
 
 // TODO: SETUP PWA (LOW PRIORITY?)
 export const pwaConfigGridsome: GridsomeConfig = {

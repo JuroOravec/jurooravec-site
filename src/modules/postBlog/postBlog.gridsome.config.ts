@@ -4,6 +4,7 @@ import { remarkConfig } from '../config/plugins/markdown.gridsome.config';
 import { createGridsomePluginRecommenderOptions } from '../config/utils/gridsomeRecommender';
 import { PostType } from '../post/postTypes';
 import { blogValidationSchema } from './postBlogValidation';
+import { PostBlogRoutes } from './postBlogTypes';
 
 export const postBlogGridsomeConfig: GridsomeConfig = {
   plugins: [
@@ -15,7 +16,7 @@ export const postBlogGridsomeConfig: GridsomeConfig = {
         typeName: PostType.BLOG,
         baseDir: './src/modules/postBlog/content',
         // See docs: https://gridsome.org/docs/templates/#setup-templates
-        route: '/blog/:slug',
+        route: PostBlogRoutes.BLOG,
         template:
           './src/modules/postBlog/components/BlogPostTemplate.vue',
         // See validateFrontmatter.js

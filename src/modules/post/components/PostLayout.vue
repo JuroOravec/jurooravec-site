@@ -12,56 +12,14 @@
           {{ post.title }}
         </h1>
 
-        <dl
-          class="PostLayout__meta d-flex flex-wrap text-body-2 pa-6 mb-12"
-        >
-          <div>
-            <dt class="label">
-              {{ post.authors.length === 1 ? 'Author' : 'Authors' }}
-            </dt>
-            <dd v-for="author in post.authors" :key="author.fullName">
-              {{ author.fullName }}
-            </dd>
-          </div>
-
-          <div v-if="post.contributors.length">
-            <dt class="label">
-              {{
-                post.contributors.length === 1 ? 'Contributor' : 'Contributors'
-              }}
-            </dt>
-            <dd
-              v-for="contributor in post.contributors"
-              :key="contributor.fullName"
-            >
-              {{ contributor.fullName }}
-            </dd>
-          </div>
-
-          <div>
-            <dt class="label">Date</dt>
-            <dd>
-              {{ formatDate(post.datePublished) }}
-            </dd>
-          </div>
-
-          <div class="flex" />
-
-          <div>
-            <dt class="label">Time</dt>
-            <dd>{{ post.timeToRead.text }}</dd>
-          </div>
-        </dl>
+        <slot name="before-content" />
 
         <!-- Component is auto-imported by https://github.com/gridsome/gridsome/tree/master/packages/vue-remark -->
         <VueRemarkContent />
 
-        <div class="mt-16 mb-12">
-          <v-divider class="mb-1" />
-          <v-divider />
-        </div>
+        <div class="pt-16 pb-12" />
 
-        <slot name="before-comments" />
+        <slot name="after-content" />
 
         <!-- Component is globally defined by Vissue plugin -->
         <Comments v-if="allowComments" :page-title="post.postId" />
@@ -77,22 +35,21 @@ import {
   PropType,
   toRefs,
 } from '@vue/composition-api';
-import { VDivider } from 'vuetify/lib';
 
-import type { GqlPost, GqlPostPerson } from '@/__generated__/graphql';
+import type { GqlPost, GqlPostPerson, GqlReadTime } from '@/__generated__/graphql';
 import AppLayout from '@/modules/core/components/AppLayout.vue';
-import { formatDate } from '@/modules/core/utils/formatDate';
 import Comments from '@/modules/core/components/Comments.vue';
 import type {
   PostMetaProps,
   PostForMeta,
 } from '@/modules/post/components/PostMeta.vue';
-import RelatedPosts from '@/modules/post/components/RelatedPosts.vue';
 
-type PostForPostLayout = PostForMeta &
-  Pick<GqlPost, 'postId' | 'timeToRead'> & {
+/** Subset of GqlPost object with props used in PostLayout component */
+export type PostInPostLayout = PostForMeta &
+  Pick<GqlPost, 'postId'> & {
     authors: Pick<GqlPostPerson, 'fullName'>[];
     contributors: Pick<GqlPostPerson, 'fullName'>[];
+    timeToRead: Pick<GqlReadTime, 'text'>;
   };
 
 /**
@@ -105,14 +62,12 @@ const PostLayout = defineComponent({
   components: {
     AppLayout,
     Comments,
-    RelatedPosts,
-    VDivider,
   },
   props: {
     post: {
-      type: Object as PropType<PostForPostLayout>,
+      type: Object as PropType<PostInPostLayout>,
       required: false,
-      default: 'Post',
+      default: null,
     },
     fallbackTitle: { type: String, required: false, default: 'Post' },
     allowComments: { type: Boolean, required: false, default: true },
@@ -128,7 +83,6 @@ const PostLayout = defineComponent({
     );
 
     return {
-      formatDate,
       metaProps,
     };
   },
@@ -137,21 +91,9 @@ export default PostLayout;
 </script>
 
 <style lang="scss">
-@import '~/modules/post/style/_post.scss';
-@import '~/modules/core/style/_neumorphic';
-
 .PostLayout {
-  @include post;
-  @include neumorphic;
-
   &__container {
     max-width: 600px;
-  }
-
-  .PostLayout__meta {
-    gap: 2.5rem;
-
-    @extend .neumorphic;
   }
 }
 </style>

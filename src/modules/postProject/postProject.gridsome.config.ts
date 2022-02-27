@@ -3,10 +3,13 @@ import { remarkConfig } from '../config/plugins/markdown.gridsome.config';
 import { createGridsomePluginRecommenderOptions } from '../config/utils/gridsomeRecommender';
 import { PostType } from '../post/postTypes';
 import { projectValidationSchema } from './postProjectValidation';
+import { PostProjectRoutes } from './postProjectTypes';
 
 export const postProjectGridsomeConfig = {
   plugins: [
     {
+      // Dynamic pages based on markdown files
+      //
       // Note: vue-remark plugin combines "@gridsome/source-filesystem" and template definition together.
       // https://github.com/gridsome/gridsome/tree/master/packages/vue-remark
       use: '@gridsome/vue-remark',
@@ -14,7 +17,7 @@ export const postProjectGridsomeConfig = {
         typeName: PostType.PROJECT,
         baseDir: './src/modules/postProject/content',
         // See docs: https://gridsome.org/docs/templates/#setup-templates
-        route: '/project/:slug',
+        route: PostProjectRoutes.PROJECT,
         template:
           './src/modules/postProject/components/ProjectPostTemplate.vue',
         // See validateFrontmatter.js

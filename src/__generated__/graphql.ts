@@ -356,8 +356,18 @@ export type GqlMetadata_SiteImageimageArgs = {
 
 export type GqlMetadata_Social = {
   __typename?: 'Metadata_Social';
-  orgTwitterHandle?: Maybe<Scalars['String']>;
-  userTwitterHandle?: Maybe<Scalars['String']>;
+  devto?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  facebook?: Maybe<Scalars['String']>;
+  github?: Maybe<Scalars['String']>;
+  instagram?: Maybe<Scalars['String']>;
+  linkedin?: Maybe<Scalars['String']>;
+  rss?: Maybe<Scalars['String']>;
+  soundcloud?: Maybe<Scalars['String']>;
+  twitch?: Maybe<Scalars['String']>;
+  twitter?: Maybe<Scalars['String']>;
+  twitterOrg?: Maybe<Scalars['String']>;
+  youtube?: Maybe<Scalars['String']>;
 };
 
 export type GqlNode = {
@@ -631,6 +641,8 @@ export type GqlProjectPost = GqlNode & GqlPost & {
   mainVideo?: Maybe<GqlOGVideo>;
   path: Scalars['String'];
   postId: Scalars['String'];
+  projectStatus: Scalars['String'];
+  projectUrl?: Maybe<Scalars['String']>;
   relatedBlogs: Array<GqlBlogPost>;
   slug: Scalars['String'];
   tags: Array<Scalars['String']>;
@@ -705,6 +717,8 @@ export type GqlProjectPostFilterInput = {
   mainVideo?: InputMaybe<GqlOGVideoFilterInput>;
   path?: InputMaybe<GqlStringQueryOperatorInput>;
   postId?: InputMaybe<GqlStringQueryOperatorInput>;
+  projectStatus?: InputMaybe<GqlStringQueryOperatorInput>;
+  projectUrl?: InputMaybe<GqlStringQueryOperatorInput>;
   slug?: InputMaybe<GqlStringQueryOperatorInput>;
   tags?: InputMaybe<GqlStringListQueryOperatorInput>;
   timeToRead?: InputMaybe<GqlReadTimeFilterInput>;
@@ -896,7 +910,22 @@ export type GqlgetAppHeaderHomeLinkMetadataQuery = { __typename?: 'Query', metad
 export type GqlgetMetaMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GqlgetMetaMetadataQuery = { __typename?: 'Query', metadata?: { __typename?: 'Metadata', siteName?: string | null, siteUrl?: string | null, siteAuthor?: { __typename?: 'Metadata_SiteAuthor', fullName?: string | null } | null, siteImage?: { __typename?: 'Metadata_SiteImage', image?: GridsomeImage | null, alt?: string | null } | null, lang?: { __typename?: 'Metadata_Lang', lang?: string | null, localeIETF?: string | null, localeJava?: string | null } | null, social?: { __typename?: 'Metadata_Social', orgTwitterHandle?: string | null, userTwitterHandle?: string | null } | null } | null };
+export type GqlgetMetaMetadataQuery = { __typename?: 'Query', metadata?: { __typename?: 'Metadata', siteName?: string | null, siteUrl?: string | null, siteAuthor?: { __typename?: 'Metadata_SiteAuthor', fullName?: string | null } | null, siteImage?: { __typename?: 'Metadata_SiteImage', image?: GridsomeImage | null, alt?: string | null } | null, lang?: { __typename?: 'Metadata_Lang', lang?: string | null, localeIETF?: string | null, localeJava?: string | null } | null, social?: { __typename?: 'Metadata_Social', twitter?: string | null, twitterOrg?: string | null } | null } | null };
+
+export type GqlgetSocialIconMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GqlgetSocialIconMetadataQuery = { __typename?: 'Query', metadata?: { __typename?: 'Metadata', social?: { __typename?: 'Metadata_Social', devto?: string | null, email?: string | null, facebook?: string | null, twitter?: string | null, github?: string | null, rss?: string | null, linkedin?: string | null, instagram?: string | null, youtube?: string | null, soundcloud?: string | null, twitch?: string | null } | null } | null };
+
+export type GqlgetAboutPageMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GqlgetAboutPageMetadataQuery = { __typename?: 'Query', metadata?: { __typename?: 'Metadata', siteAuthor?: { __typename?: 'Metadata_SiteAuthor', firstName?: string | null, lastName?: string | null, fullName?: string | null, gender?: string | null } | null } | null };
+
+export type GqlgetHomeDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GqlgetHomeDataQuery = { __typename?: 'Query', blogs?: { __typename?: 'BlogPostConnection', edges?: Array<{ __typename?: 'BlogPostEdge', node?: { __typename?: 'BlogPost', postId: string, path: string, title: string, description: string, datePublished?: any | null, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null, projects?: { __typename?: 'ProjectPostConnection', edges?: Array<{ __typename?: 'ProjectPostEdge', node?: { __typename?: 'ProjectPost', postId: string, path: string, title: string, description: string, datePublished?: any | null, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null, metadata?: { __typename?: 'Metadata', siteDescription?: string | null } | null };
 
 export type GqlgetBlogPostByPathQueryVariables = Exact<{
   id: Scalars['ID'];
@@ -905,31 +934,21 @@ export type GqlgetBlogPostByPathQueryVariables = Exact<{
 
 export type GqlgetBlogPostByPathQuery = { __typename?: 'Query', post?: { __typename?: 'BlogPost', postId: string, title: string, canonicalUrl: string, datePublished?: any | null, dateModified?: any | null, dateExpired?: any | null, description: string, tags: Array<string>, authors: Array<{ __typename?: 'PostPerson', fullName: string, url: string }>, contributors: Array<{ __typename?: 'PostPerson', fullName: string, url: string }>, timeToRead: { __typename?: 'ReadTime', text: string }, audios: Array<{ __typename?: 'PostAudio', path: string, mimeType: string }>, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string, mimeType: string, size: { __typename?: 'PostResourceSize', width: number, height: number } }>, videos: Array<{ __typename?: 'PostVideo', path: string, mimeType: string, size: { __typename?: 'PostResourceSize', width: number, height: number } }>, mainVideo?: { __typename?: 'OGVideo', url: string, duration: number, releaseDate?: any | null, tags: Array<string>, size: { __typename?: 'PostResourceSize', width: number, height: number }, actors: Array<{ __typename?: 'OGVideoActor', url: string, role?: string | null }>, directors: Array<{ __typename?: 'OGProfileRef', url: string }>, writers: Array<{ __typename?: 'OGProfileRef', url: string }> } | null, related: Array<{ __typename?: 'BlogPost', id: string, title: string, description: string, canonicalUrl: string, path: string, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }>, authors: Array<{ __typename?: 'PostPerson', fullName: string }> }>, relatedProjects: Array<{ __typename?: 'ProjectPost', id: string, title: string, description: string, canonicalUrl: string, path: string, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }>, authors: Array<{ __typename?: 'PostPerson', fullName: string }> }> } | null };
 
+export type GqlgetAllBlogsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GqlgetAllBlogsQuery = { __typename?: 'Query', posts?: { __typename?: 'BlogPostConnection', edges?: Array<{ __typename?: 'BlogPostEdge', node?: { __typename?: 'BlogPost', postId: string, path: string, title: string, description: string, datePublished?: any | null, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null };
+
 export type GqlgetProjectPostByPathQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type GqlgetProjectPostByPathQuery = { __typename?: 'Query', post?: { __typename?: 'ProjectPost', postId: string, title: string, canonicalUrl: string, datePublished?: any | null, dateModified?: any | null, dateExpired?: any | null, description: string, tags: Array<string>, authors: Array<{ __typename?: 'PostPerson', fullName: string, url: string }>, contributors: Array<{ __typename?: 'PostPerson', fullName: string, url: string }>, timeToRead: { __typename?: 'ReadTime', text: string }, audios: Array<{ __typename?: 'PostAudio', path: string, mimeType: string }>, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string, mimeType: string, size: { __typename?: 'PostResourceSize', width: number, height: number } }>, videos: Array<{ __typename?: 'PostVideo', path: string, mimeType: string, size: { __typename?: 'PostResourceSize', width: number, height: number } }>, mainVideo?: { __typename?: 'OGVideo', url: string, duration: number, releaseDate?: any | null, tags: Array<string>, size: { __typename?: 'PostResourceSize', width: number, height: number }, actors: Array<{ __typename?: 'OGVideoActor', url: string, role?: string | null }>, directors: Array<{ __typename?: 'OGProfileRef', url: string }>, writers: Array<{ __typename?: 'OGProfileRef', url: string }> } | null, relatedBlogs: Array<{ __typename?: 'BlogPost', id: string, title: string, description: string, canonicalUrl: string, path: string, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }>, authors: Array<{ __typename?: 'PostPerson', fullName: string }> }> } | null };
-
-export type GqlgetAboutPageMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GqlgetAboutPageMetadataQuery = { __typename?: 'Query', metadata?: { __typename?: 'Metadata', siteAuthor?: { __typename?: 'Metadata_SiteAuthor', firstName?: string | null, lastName?: string | null, fullName?: string | null, gender?: string | null } | null } | null };
-
-export type GqlgetAllBlogsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GqlgetAllBlogsQuery = { __typename?: 'Query', posts?: { __typename?: 'BlogPostConnection', edges?: Array<{ __typename?: 'BlogPostEdge', node?: { __typename?: 'BlogPost', postId: string, path: string, title: string, description: string } | null } | null> | null } | null };
-
-export type GqlgetIndexPagePostsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GqlgetIndexPagePostsQuery = { __typename?: 'Query', projects?: { __typename?: 'ProjectPostConnection', edges?: Array<{ __typename?: 'ProjectPostEdge', node?: { __typename?: 'ProjectPost', id: string, datePublished?: any | null, dateModified?: any | null, dateExpired?: any | null, title: string, tags: Array<string>, path: string, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null, blogs?: { __typename?: 'BlogPostConnection', edges?: Array<{ __typename?: 'BlogPostEdge', node?: { __typename?: 'BlogPost', id: string, path: string, title: string } | null } | null> | null } | null };
+export type GqlgetProjectPostByPathQuery = { __typename?: 'Query', post?: { __typename?: 'ProjectPost', postId: string, title: string, canonicalUrl: string, projectUrl?: string | null, projectStatus: string, datePublished?: any | null, dateModified?: any | null, dateExpired?: any | null, description: string, tags: Array<string>, authors: Array<{ __typename?: 'PostPerson', fullName: string, url: string }>, contributors: Array<{ __typename?: 'PostPerson', fullName: string, url: string }>, timeToRead: { __typename?: 'ReadTime', text: string }, audios: Array<{ __typename?: 'PostAudio', path: string, mimeType: string }>, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string, mimeType: string, size: { __typename?: 'PostResourceSize', width: number, height: number } }>, videos: Array<{ __typename?: 'PostVideo', path: string, mimeType: string, size: { __typename?: 'PostResourceSize', width: number, height: number } }>, mainVideo?: { __typename?: 'OGVideo', url: string, duration: number, releaseDate?: any | null, tags: Array<string>, size: { __typename?: 'PostResourceSize', width: number, height: number }, actors: Array<{ __typename?: 'OGVideoActor', url: string, role?: string | null }>, directors: Array<{ __typename?: 'OGProfileRef', url: string }>, writers: Array<{ __typename?: 'OGProfileRef', url: string }> } | null, relatedBlogs: Array<{ __typename?: 'BlogPost', id: string, title: string, description: string, canonicalUrl: string, path: string, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }>, authors: Array<{ __typename?: 'PostPerson', fullName: string }> }> } | null };
 
 export type GqlgetAllProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GqlgetAllProjectsQuery = { __typename?: 'Query', posts?: { __typename?: 'ProjectPostConnection', edges?: Array<{ __typename?: 'ProjectPostEdge', node?: { __typename?: 'ProjectPost', id: string, datePublished?: any | null, dateModified?: any | null, dateExpired?: any | null, title: string, tags: Array<string>, path: string, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null };
+export type GqlgetAllProjectsQuery = { __typename?: 'Query', posts?: { __typename?: 'ProjectPostConnection', edges?: Array<{ __typename?: 'ProjectPostEdge', node?: { __typename?: 'ProjectPost', postId: string, path: string, title: string, description: string, datePublished?: any | null, images: Array<{ __typename?: 'PostImage', path?: GridsomeImage | null, alt: string }> } | null } | null> | null } | null };
 
-// Generated on 2022-02-14T22:47:16+00:00
+// Generated on 2022-02-27T21:13:56+00:00

@@ -1,11 +1,14 @@
 <template>
-  <v-list-item :to="{ path: item.node.path }" class="SearchBoxItem d-flex mx-n4">
+  <v-list-item
+    :to="{ path: item.node.path }"
+    class="SearchBoxItem d-flex mx-n4"
+  >
     <v-list-item-avatar
       v-if="image"
       color="indigo"
       class="text-h5 font-weight-light white--text rounded-0"
     >
-      <g-image :src="image.path" :alt="image.alt" />
+      <g-image :src="image.path" v-bind="image" />
     </v-list-item-avatar>
 
     <v-list-item-content>

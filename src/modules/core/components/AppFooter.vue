@@ -1,5 +1,7 @@
 <template>
-  <footer class="AppFooter d-flex text-caption pt-8 pb-6">
+  <footer
+    class="AppFooter d-flex text-caption pt-8 pb-6 secondary--text text--lighten-3"
+  >
     <div class="flex-grow-0 mx-auto">{{ siteCopyright }}</div>
   </footer>
 </template>
@@ -22,7 +24,7 @@ const AppFooter = defineComponent({
   name: 'AppFooter',
   setup() {
     const siteCopyright = useStaticQuery<GqlgetFooterMetadataQuery, string>(
-      (data) => data.metadata?.siteCopyright ?? '',
+      (data) => data?.metadata?.siteCopyright ?? '',
     );
 
     return {

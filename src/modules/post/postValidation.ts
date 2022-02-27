@@ -139,6 +139,7 @@ export const postPersonValidationSchema = Joi.object<PostPersonInput>({
     .required(),
 })
   .allow(null)
+  .unknown(true)
   .required();
 
 /** Common fields of a post */
@@ -185,4 +186,5 @@ export const postValidationSchema = Joi.object<PostInput>({
     .items(postAudioValidationSchema.disallow(null).optional())
     .unique()
     .required(),
+  ignore: Joi.boolean().optional(),
 }).required();

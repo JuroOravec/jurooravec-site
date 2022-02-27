@@ -4,7 +4,7 @@ import type { GridsomeConfig } from './typings/gridsome';
 import { mergeConfigs } from './modules/config/utils/mergeConfigs';
 
 // Common config
-import { metadata, metadataConfigGridsome } from './modules/config/plugins/metadata.gridsome.config'; // prettier-ignore
+import { metadata } from './modules/config/metadata'; // prettier-ignore
 import { vueConfigGridsome } from './modules/config/plugins/vue.gridsome.config'; // prettier-ignore
 import { analyticsConfigGridsome } from './modules/config/plugins/analytics.gridsome.config'; // prettier-ignore
 import { discoverabilityConfigGridsome } from './modules/config/plugins/discoverability.gridsome.config'; // prettier-ignore
@@ -32,13 +32,25 @@ const gridsomeConfig: GridsomeConfig = {
   metadata,
   templates: {},
   transformers: {},
+  configureWebpack: {
+    module: {
+      rules: [
+        {
+          // Needed for importing vueuse into esm modules.
+          // See https://stackoverflow.com/a/69343125/9788634 
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: 'javascript/auto',
+        },
+      ],
+    },
+  },
 };
 
 // See https://gridsome.org/docs/config/
 const mergedConfig = mergeConfigs(
   // Note: order is important
   gridsomeConfig,
-  metadataConfigGridsome,
   vueConfigGridsome,
   markdownConfigGridsome,
   // pwaConfigGridsome,

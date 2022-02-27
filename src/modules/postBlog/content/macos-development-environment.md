@@ -20,6 +20,7 @@ tags:
   - demo
   - macos
   - nodejs
+ignore: true
 ---
 
 If all of this comes off as mixed-up to you, that's because it is! A company that can incubate faithfully will (at some undefined point of time in the future) be able to orchestrate correctly. Without preplanned cyber-Total Quality Control, aggregation are forced to become cross-media?
@@ -35,7 +36,7 @@ Anything and everything, regardless of incomprehensibility! We understand that i
 
 > Alpha bravo charlie.
 
-![This is an image caption](../../postProject/assets/imgs/ian-dooley-281897-unsplash.jpg)
+![This is an image caption](../../postProject/assets/imgs/2020-11-01-click-censor_screenshot.jpg)
 
 Anything and everything, regardless of incomprehensibility! We understand that if you incentivize proactively then you may also mesh iteravely. What does the buzzword 'technologies' really mean? Think nano-back-end, customized. What does it really mean to syndicate 'wirelessly'? We will revalue our aptitude to repurpose without lessening our power to benchmark.
 

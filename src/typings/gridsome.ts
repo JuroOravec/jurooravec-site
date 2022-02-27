@@ -72,13 +72,36 @@ export type GridsomeServerPlugin<TOptions = any> = (
  * See https://github.com/gridsome/gridsome/blob/7a2080ef39621d4e15f97fffa3442404549009ac/gridsome/lib/app/Plugins.js
  */
 export interface GridsomePlugin {
+  /** See https://gridsome.org/docs/pages-api */
+  createPages: (
+    callback: (actions: GridsomePluginCreatePagesActions) => void,
+  ) => void;
+  /** See https://gridsome.org/docs/pages-api/#create-managed-pages */
+  createManagedPages: (
+    callback: (actions: GridsomePluginCreatePagesActions) => void,
+  ) => void;
   loadSource: (
     callback: (actions: GridsomePluginLoadSourceActions) => void,
   ) => void;
   onCreateNode: <TNode extends CollectionNode>(
-    callback: (node: TNode) => void | Record<string, any>,
+    callback: (node: TNode) => Record<string, any> | null | undefined,
   ) => void;
   chainWebpack: (...args: any[]) => any;
+}
+
+interface GridsomePluginCreatePagesActions {
+  /** See https://gridsome.org/docs/pages-api/#createpageoptions */
+  createPage: (options: GridsomePluginCreatePageOptions) => void;
+  graphql: (graphqlQuery: string) => Promise<any>;
+}
+
+export interface GridsomePluginCreatePageOptions {
+  path: string;
+  component: string;
+  /** Optional context for the page and page-query */
+  context?: Record<string, any>;
+  /** Optional context only for page-query. */
+  queryVariables?: Record<string, any>;
 }
 
 /**
@@ -329,7 +352,7 @@ interface GridsomeImageProcessQueue {
 
 /**
  * Gridsome's Image Scalar type
- * 
+ *
  * See https://github.com/gridsome/gridsome/blob/61dc64963449cc009b63c70f18961e536a4c00e0/gridsome/lib/graphql/types/image.js
  * Related https://github.com/gridsome/gridsome/blob/61dc64963449cc009b63c70f18961e536a4c00e0/gridsome/lib/app/queue/ImageProcessQueue.js
  */

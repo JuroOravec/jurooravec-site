@@ -30,7 +30,8 @@ export const projectPostSchema = gql`
     timeToRead: ReadTime!
 
     # Front-matter fields (own fields)
-    # None
+    projectUrl: String
+    projectStatus: String!
 
     # Fields below are added by other plugins (No need to define)
     # timeToRead: ReadTime              # readTime plugin

@@ -43,6 +43,7 @@ export default Comments;
 
     .vssue-header-comments-count {
       font-size: 1.2rem;
+      font-weight: 300;
       color: rgba(0, 0, 0, 0.87) !important;
     }
 
@@ -81,8 +82,8 @@ export default Comments;
     }
     .vssue-button:not([disabled]) {
       @extend .elevation-3;
-      color: var(--color-contrast-1) !important;
-      border-color: var(--color-contrast-1) !important;
+      color: var(--v-secondary-lighten1) !important;
+      border-color: var(--v-secondary-lighten1) !important;
     }
 
     .vssue-current-user {
@@ -200,7 +201,7 @@ export default Comments;
     }
 
     a {
-      color: var(--color-contrast-1);
+      color: var(--v-secondary-lighten1);
       font-weight: 700;
 
       &:hover {

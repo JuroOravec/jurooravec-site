@@ -3,7 +3,7 @@
     app
     color="white"
     class="AppHeader link-soft"
-    :class="{ 'AppHeader--large': large }"
+    :class="{ large: large }"
     elevate-on-scroll
   >
     <div class="d-flex align-center gap-2">
@@ -70,7 +70,7 @@ const AppHeader = defineComponent({
     VToolbarTitle,
   },
   props: {
-    large: { type: Boolean, required: false, default: false },
+    large: { type: Boolean, required: false, default: true },
     navItems: {
       type: Array as PropType<NavItem[]>,
       required: false,
@@ -127,7 +127,7 @@ export default AppHeader;
     }
   }
 
-  &#{&}--large {
+  &.large {
     .v-toolbar__content {
       padding-left: 32px;
       padding-right: 32px;

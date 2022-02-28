@@ -6,7 +6,7 @@
 
     <SearchBox :post-type="postType" class="pb-12" />
 
-    <PostCollection :posts="posts" />
+    <PostCollection :posts="posts" :small="$vuetify.breakpoint.xsOnly" />
   </AppLayout>
 </template>
 

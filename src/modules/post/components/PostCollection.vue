@@ -1,5 +1,5 @@
 <template>
-  <div class="PostCollection" :class="{ large: $vuetify.breakpoint.smAndUp }">
+  <div class="PostCollection" :class="{ small: small }">
     <g-link
       v-for="post in posts"
       :to="post.path"
@@ -43,6 +43,11 @@ const PostCollection = defineComponent({
       required: false,
       default: () => [],
     },
+    small: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   setup() {
     return {
@@ -70,7 +75,7 @@ export default PostCollection;
     object-fit: cover;
   }
 
-  &.large {
+  &:not(.small) {
     img {
       max-width: 250px;
     }
@@ -84,7 +89,7 @@ export default PostCollection;
     }
   }
 
-  &:not(.large) {
+  &.small {
     .PostCollection {
       &__post {
         display: block !important;

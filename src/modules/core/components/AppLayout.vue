@@ -126,7 +126,7 @@ const AppLayout = defineComponent({
     );
 
     const isLarge = computed(
-      (): boolean => instance?.proxy?.$vuetify.breakpoint.smAndUp ?? false,
+      (): boolean => instance?.proxy?.$vuetify.breakpoint.smAndUp ?? true,
     );
 
     watch(isLarge, (newIsLarge) => {

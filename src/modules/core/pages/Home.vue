@@ -21,7 +21,10 @@
     </div>
 
     <h2 class="pt-16 mt-16 secondary--text text--lighten-3">Latest posts</h2>
-    <PostCollection :posts="latestPosts" />
+    <PostCollection
+      :posts="latestPosts"
+      :small="$vuetify.breakpoint.xsOnly"
+    />
   </AppLayout>
 </template>
 

@@ -1,3 +1,4 @@
+import { metadata } from '@/modules/config/metadata';
 import { inject } from '@vue/composition-api';
 import mapValues from 'lodash/mapValues';
 import mixpanel, { Config } from 'mixpanel-browser';
@@ -31,8 +32,8 @@ export const createAnalytics = (): Analytics => {
   }
 
   const analyticsInstances: Analytics[] = [
-    createMixpanelAnalytics('aeced5f8481052407fd75222b451eb67', {
-      debug: true,
+    createMixpanelAnalytics(metadata.analytics.mixpanelToken, {
+      debug: process.env.NODE_ENV === 'development',
     }),
   ];
 

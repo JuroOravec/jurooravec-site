@@ -45,6 +45,16 @@ export interface GridsomeConfigMetadata {
     /** Organisation's Twitter username (without `@`), e.g. `nytimes` */
     twitterOrg: string;
   };
+  analytics: {
+    mixpanelToken: string;
+    sentryIngest: string;
+  };
+  comments: {
+    vssueGithubUser: string;
+    vssueGithubRepo: string;
+    vssueClientId: string;
+    vssueClientSecret: string;
+  };
 }
 
 const cwd = process.cwd();
@@ -113,5 +123,15 @@ export const metadata: GridsomeConfigMetadata = {
     youtube: 'UC8JdqB5j16JkQ1a3RHdCejQ',
     soundcloud: '',
     twitch: 'freefalltwelve',
+  },
+  analytics: {
+    mixpanelToken: process.env.GRIDSOME_MIXPANEL_TOKEN ?? '',
+    sentryIngest: process.env.GRIDSOME_SENTRY_INGEST ?? '',
+  },
+  comments: {
+    vssueGithubUser: 'JuroOravec',
+    vssueGithubRepo: 'jurooravec-site',
+    vssueClientId: process.env.GRIDSOME_VSSUE_CLIENT_ID ?? '',
+    vssueClientSecret: process.env.GRIDSOME_VSSUE_CLIENT_SECRET ?? '',
   },
 };

@@ -8,9 +8,12 @@ export const remarkConfig = {
     // Highlight for code blocks, see https://gridsome.org/plugins/@gridsome/remark-prismjs
     '@gridsome/remark-prismjs',
     // Add custom styling to markdown elements
-    ['@noxify/gridsome-remark-classes', {
-      thematicBreak: 'v-divider theme--light mt-3 mb-6',
-    }],
+    [
+      '@noxify/gridsome-remark-classes',
+      {
+        thematicBreak: 'v-divider theme--light mt-3 mb-6',
+      },
+    ],
     // Add info containers (info, warn, error, ...)
     // See https://gridsome.org/plugins/gridsome-plugin-remark-container
     [
@@ -31,12 +34,25 @@ export const remarkConfig = {
     // See https://gridsome.org/plugins/gridsome-plugin-remark-youtube
     ['gridsome-plugin-remark-youtube', { width: '500px', align: 'auto' }],
     [
+      'gridsome-remark-video',
+      {
+        width: 'auto',
+        height: 'auto',
+        preload: 'auto',
+        muted: true,
+        autoplay: true,
+        playsinline: true,
+        controls: true,
+        loop: true,
+      },
+    ],
+    [
       'gridsome-remark-figure-caption',
       {
         // All the options here are optional
-        figureClassName: "md-figure-block",
-        imageClassName: "md-figure-image",
-        captionClassName: "md-figure-caption",
+        figureClassName: 'md-figure-block pb-8',
+        imageClassName: 'md-figure-image',
+        captionClassName: 'md-figure-caption caption',
       },
     ],
   ],

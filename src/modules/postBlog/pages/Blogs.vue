@@ -10,7 +10,7 @@
 
 <page-query>
 query getAllBlogs {
-	posts: allBlogPost {
+	posts: allBlogPost(sort: [{ by: "datePublished", order: DESC }], ) {
     edges {
       node {
         postId

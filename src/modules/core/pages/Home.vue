@@ -21,10 +21,7 @@
     </div>
 
     <h2 class="pt-16 mt-16 secondary--text text--lighten-3">Latest posts</h2>
-    <PostCollection
-      :posts="latestPosts"
-      :small="$vuetify.breakpoint.xsOnly"
-    />
+    <PostCollection :posts="latestPosts" :small="$vuetify.breakpoint.xsOnly" />
   </AppLayout>
 </template>
 
@@ -72,7 +69,7 @@ import { useTimestamp } from '@vueuse/core';
 import differenceInMilliseconds from 'date-fns/differenceInMilliseconds';
 import minutesToMilliseconds from 'date-fns/minutesToMilliseconds';
 import hoursToMilliseconds from 'date-fns/hoursToMilliseconds';
-import sortBy from 'lodash/sortBy';
+import orderBy from 'lodash/orderBy';
 
 import AppLayout from '@/modules/core/components/AppLayout.vue';
 import type { GqlgetHomeDataQuery } from '@/__generated__/graphql';
@@ -102,10 +99,9 @@ const Home = defineComponent({
         ...(blogs?.value?.edges ?? []),
       ]
         .map((post) => post?.node ?? null)
-        .filter(isNotNil)
-        .slice(0, 3);
+        .filter(isNotNil);
 
-      return sortBy(posts, (post) => post.datePublished);
+      return orderBy(posts, (post) => post.datePublished, 'desc').slice(0, 3);
     });
 
     const siteDescription = computed(

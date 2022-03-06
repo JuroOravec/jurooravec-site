@@ -10,7 +10,7 @@
 
 <page-query>
 query getAllProjects {
-	posts: allProjectPost {
+	posts: allProjectPost(sort: [{ by: "datePublished", order: DESC }] ) {
     edges {
       node {
         postId

@@ -1,5 +1,8 @@
 # TODO
 
+- Add anchors to subheadings from Markdown
+  - See https://github.com/remarkjs/remark-autolink-headings
+
 - Migrate to netlify.toml
   - See https://docs.netlify.com/configure-builds/file-based-configuration/
   - And https://gridsome.org/docs/deploy-to-netlify/#from-your-git-repository

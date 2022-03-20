@@ -213,7 +213,6 @@ const About = defineComponent({
       },
       // TODO
       // images?: Maybe<CreateOgImageTagsArgs[]>;
-      // videos?: Maybe<CreateOgVideoTagsArgs[]>;
     };
 
     return {

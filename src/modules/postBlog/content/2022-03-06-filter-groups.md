@@ -17,6 +17,7 @@ images:
   - path: ../assets/imgs/2022-03-06-filter-groups-dataset-3d-example-highlight.png
     alt: Example of a 3D scatter plot with encircled parts of data clusters
 videos:
+  # TODO: This is not working
   - path: ../assets/vids/2022-03-06-filter-groups-dataset-3d-example.mp4
     size:
       width: 1354

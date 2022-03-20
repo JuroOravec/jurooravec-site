@@ -2,6 +2,14 @@
   <Meta v-bind="metaProps" class="PostMeta" />
 </template>
 
+<static-query>
+query getPostMetaMetadata {
+  metadata {
+    siteUrl
+  }
+}
+</static-query>
+
 <script lang="ts">
 import {
   computed,
@@ -10,7 +18,12 @@ import {
   toRefs,
 } from '@vue/composition-api';
 
-import type { GqlPost, GqlPostPerson, Maybe } from '@/__generated__/graphql';
+import type {
+  GqlPost,
+  GqlPostPerson,
+  Maybe,
+  GqlgetPostMetaMetadataQuery,
+} from '@/__generated__/graphql';
 import type {
   CreateOgAudioTagsArgs,
   CreateOgImageTagsArgs,
@@ -18,7 +31,8 @@ import type {
 } from '@/modules/core/utils/metaTagsOpenGraph';
 import Meta, { MetaProps } from '@/modules/core/components/Meta.vue';
 import { OgType } from '@/modules/core/utils/metaInfo';
-import { getUrlFromPath } from '../utils';
+import { useStaticQuery } from '@/modules/core/utils/useGridsomeQuery';
+import { formatUrlFromPath } from '@/modules/core/utils/url';
 
 export type PostForMeta = Pick<
   GqlPost,
@@ -45,9 +59,11 @@ export interface PostMetaProps {
 /** Create metaInfo data for a post template page */
 const createPostMetaArgs = ({
   post,
+  siteUrl,
   fallbackTitle,
 }: {
   post: PostForMeta | null;
+  siteUrl: string | null;
   fallbackTitle: string;
 }): MetaProps => {
   const pageTitle = post?.title ?? fallbackTitle;
@@ -59,7 +75,8 @@ const createPostMetaArgs = ({
     ? post?.audios?.map(
         (audio): CreateOgAudioTagsArgs => ({
           mimeType: audio.mimeType,
-          url: audio.path ? getUrlFromPath(audio.path) : null,
+          url:
+            audio.path && siteUrl ? formatUrlFromPath(siteUrl, audio.path) : null,
         }),
       )
     : null;
@@ -73,9 +90,12 @@ const createPostMetaArgs = ({
   //    to   `https://jurora.vc/assets/static/2022-03-06-filter-groups-dataset-3d-example-highlight.6607a71.10110202add01828248b8c89df818a6e.png`
   const images = post?.images?.length
     ? post?.images.map(
-      (image): CreateOgImageTagsArgs => ({
+        (image): CreateOgImageTagsArgs => ({
           // Note: image.path is of type Image
-          url: image.path?.src ? getUrlFromPath(image.path?.src) : null,
+          url:
+            image.path?.src && siteUrl
+              ? formatUrlFromPath(siteUrl, image.path?.src)
+              : null,
           alt: image.alt,
           mimeType: image.mimeType,
           width: image.size.width,
@@ -87,7 +107,8 @@ const createPostMetaArgs = ({
   const videos = post?.videos?.length
     ? post?.videos.map(
         (image): CreateOgVideoTagsArgs => ({
-          url: image.path ? getUrlFromPath(image.path) : null,
+          url:
+            image.path && siteUrl ? formatUrlFromPath(siteUrl, image.path) : null,
           mimeType: image.mimeType,
           width: image.size.width,
           height: image.size.height,
@@ -153,9 +174,16 @@ const PostMeta = defineComponent({
   setup(props) {
     const { post, fallbackTitle } = toRefs(props);
 
+    const queryResult = useStaticQuery<
+      GqlgetPostMetaMetadataQuery,
+      GqlgetPostMetaMetadataQuery
+    >((data) => data ?? {});
+    const siteUrl = computed((): string | null => queryResult.value?.metadata?.siteUrl ?? null); // prettier-ignore
+
     const metaProps = computed<MetaProps>(() => {
       return createPostMetaArgs({
         post: post.value,
+        siteUrl: siteUrl.value,
         fallbackTitle: fallbackTitle.value,
       });
     });

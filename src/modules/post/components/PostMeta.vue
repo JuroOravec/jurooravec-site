@@ -81,13 +81,6 @@ const createPostMetaArgs = ({
       )
     : null;
 
-  // TODO: FIX URL WHEN IT'S COMING FROM THE FRONTMATTER
-  // 1) Video (Fix root path)
-  //    from: `https://jurora.vc//opt/build/repo/src/modules/postBlog/assets/vids/2022-03-06-filter-groups-dataset-3d-example.mp4`
-  //    to:   `https://jurora.vc/assets/media/2022-03-06-filter-groups-dataset-3d-example.97a60a49.mp4`
-  // 2) Image (Remove double forward slashes)
-  //    from `https://jurora.vc//assets/static/2022-03-06-filter-groups-dataset-3d-example-highlight.6607a71.10110202add01828248b8c89df818a6e.png`
-  //    to   `https://jurora.vc/assets/static/2022-03-06-filter-groups-dataset-3d-example-highlight.6607a71.10110202add01828248b8c89df818a6e.png`
   const images = post?.images?.length
     ? post?.images.map(
         (image): CreateOgImageTagsArgs => ({

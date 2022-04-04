@@ -20,7 +20,13 @@
       </h4>
     </div>
 
-    <h2 class="pt-16 mt-16 secondary--text text--lighten-3">Latest posts</h2>
+    <h2 class="pt-16 mt-16 secondary--text text--lighten-3">Podcasts</h2>
+    <PostCollectionCompact
+      :posts="podcasts"
+      :small="$vuetify.breakpoint.xsOnly"
+    />
+
+    <h2 class="pt-16 secondary--text text--lighten-3">Latest posts</h2>
     <PostCollection :posts="latestPosts" :small="$vuetify.breakpoint.xsOnly" />
   </AppLayout>
 </template>
@@ -76,16 +82,58 @@ import type { GqlgetHomeDataQuery } from '@/__generated__/graphql';
 import type { MetaProps } from '@/modules/core/components/Meta.vue';
 import { usePageQuery } from '@/modules/core/utils/useGridsomeQuery';
 import PostCollection from '@/modules/post/components/PostCollection.vue';
+import PostCollectionCompact, {
+  PostInPostCollectionCompact,
+} from '@/modules/post/components/PostCollectionCompact.vue';
+import ScitoflowLogoImg from '../assets/imgs/scitoflow-logo.png';
+import CestouTechLogoImg from '../assets/imgs/cestou-tech-logo.png';
 import { refToRefs } from '../utils/vueReactivity';
 import { isNotNil } from '../utils/isNotNull';
 
 const deadline = new Date('2030-12-13');
+
+// TODO: Move this to its own colletion, or a ProjectPost with specific 'category' type?
+const podcasts: PostInPostCollectionCompact[] = [
+  {
+    postId: 'podcast_1',
+    title: 'Scitoflow',
+    path: 'https://scitoflow.com',
+    description:
+      "Scitoflow is where we explore the behind-the-scenes processes of doing science. The boring, the tedious, the things you don't hear in the news, the… Oh, you want fun? Curiosity is the fun here!",
+    images: [
+      {
+        alt: 'Scitoflow logo',
+        // @ts-ignore
+        path: {
+          src: ScitoflowLogoImg,
+        },
+      },
+    ],
+  },
+  {
+    postId: 'podcast_2',
+    title: 'Cestou Tech',
+    path: 'https://cestou.tech',
+    description:
+      'Slovak podcast where we meet with Slovak and Czech indie hackers - the people who build interesting software products on the side.',
+    images: [
+      {
+        alt: 'Cestou Tech logo',
+        // @ts-ignore
+        path: {
+          src: CestouTechLogoImg,
+        },
+      },
+    ],
+  },
+];
 
 const Home = defineComponent({
   name: 'Home',
   components: {
     AppLayout,
     PostCollection,
+    PostCollectionCompact,
   },
   setup() {
     const data = usePageQuery<GqlgetHomeDataQuery, GqlgetHomeDataQuery>(
@@ -131,6 +179,7 @@ const Home = defineComponent({
     );
 
     return {
+      podcasts,
       latestPosts,
       countdown,
       metaProps,

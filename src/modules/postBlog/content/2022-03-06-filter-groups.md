@@ -29,6 +29,8 @@ tags:
   - opinion
 ---
 
+![](../assets/imgs/2022-03-06-filter-groups-dataset-3d-example-highlight.png)
+
 Jean was searching for a new place. He's a frequent mover, this was the 2nd time
 in last half a year. He's moved places 5 times in the last 3 years.
 
